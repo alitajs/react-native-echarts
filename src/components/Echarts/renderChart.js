@@ -8,7 +8,7 @@ export default function renderChart(props, isFirst) {
   // const height = props.height || 400;
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
-  echarts.registerMap('china', ${JSON.stringify(chinaJson)});
+  echarts.registerMap('china', `${JSON.stringify(chinaJson)}`);
   if (isFirst) {
     return `
     document.getElementById('main').style.height = "${height}";

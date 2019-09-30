@@ -1,12 +1,12 @@
 // 修改后
 import echarts from './echarts.min';
 import toString from '../../util/toString';
-
 var myChart = null;
 export default function renderChart(props, isFirst) {
   // const height = props.height || 400;
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
+
   if (isFirst) {
     return `
     document.getElementById('main').style.height = "${height}";

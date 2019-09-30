@@ -33,19 +33,19 @@ export default class App extends Component {
 
   render() {
     const messageFn = this.props.onMessage || null;
-    if (Platform.OS == 'android') {
+    if (Platform.OS === 'android') {
       return (
         <View style={{ flex: 1, height: this.props.height || 400 }}>
           <WebView
             ref="chart"
             scrollEnabled={false}
-            javaScriptEnabled={true}
+            javaScriptEnabled
+            originWhitelist={['*']}
             injectedJavaScript={renderChart(this.props, true)}
             style={{
               height: this.props.height || 400
             }}
             onMessage={messageFn}
-            //source={require('./tpl.html')}
             source={{ uri: 'file:///android_asset/tpl.html' }}
           />
         </View>
@@ -57,16 +57,14 @@ export default class App extends Component {
             ref="chart"
             scrollEnabled={false}
             scalesPageToFit={false}
+            useWebKit
+            originWhitelist={['*']}
             injectedJavaScript={renderChart(this.props, true)}
             style={{
               height: this.props.height || 400
             }}
             onMessage={messageFn}
-            source={
-              Platform.OS === 'ios'
-                ? require('./tpl.html')
-                : { uri: 'file:///android_asset/tpl.html' }
-            }
+            source={require('./tpl.html')}
           />
         </View>
       );
